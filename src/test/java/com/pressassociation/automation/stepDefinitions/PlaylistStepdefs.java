@@ -69,7 +69,8 @@ public class PlaylistStepdefs {
 
     @When("^I (.*?) created video (to|from) playlist$")
     public void iAddCreatedVideoToPlaylist(String methodOperation, String temp) throws Throwable {
-        createAndMakePatchPlayListcallWithOperation(DataStore.getDataKey(PLAYLISTID).toString(), DataStore.getDataKey(SONGID).toString(), methodOperation);
+        createAndMakePatchPlayListcallWithOperation(DataStore.getDataKey(PLAYLISTID).toString(),
+                DataStore.getDataKey(SONGID).toString(), methodOperation);
     }
 
     @When("^I get all creted playlists$")
@@ -154,5 +155,12 @@ public class PlaylistStepdefs {
     public void iDeleteNonExistingPlaylistWithId(String playlistId) throws Throwable {
         restCallDriver.callDeleteRestEndPoint(DataStore.getDataKey("baseURL").toString() +
                 DataStore.getDataKey("PlaylistResource") + "/" + playlistId);
+    }
+
+    @When("^I delete the video$")
+    public void iDeleteTheVideo() throws Throwable {
+        restCallDriver.callDeleteRestEndPoint(DataStore.getDataKey("baseURL").toString()+
+                DataStore.getDataKey("VideoResource")+"/"+DataStore.getDataKey(SONGID));
+        Assert.assertEquals(DataStore.getDataKey(RESPONSECODE), 204);
     }
 }

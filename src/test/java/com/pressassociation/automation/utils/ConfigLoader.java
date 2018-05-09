@@ -9,6 +9,7 @@ public class ConfigLoader {
     Properties prop = new Properties();
     InputStream input = null;
 
+    //loading config from config files
     public void loadConfig(){
         try {
             input = new FileInputStream("src"+File.separator+"test"+ File.separator+"resources"+

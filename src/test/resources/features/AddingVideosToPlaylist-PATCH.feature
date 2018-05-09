@@ -18,15 +18,15 @@ Feature: Adding videos to playlist
 
   Scenario: Removing videos from a playlist
 
-    When I add created video to playlist
-    Then the response code is 204
+    And I add created video to playlist
+    And the response code is 204
 
     When I remove created video from playlist
     Then the response code is 501
 
 
 
-  Scenario Outline: Trying to add invalid videos to a existing playlist
+  Scenario Outline: Trying to add invalid videos(ids) to a playlist
 
     When I add invalid video <ID> to playlist
     Then the response code is 500
@@ -44,8 +44,11 @@ Feature: Adding videos to playlist
   Scenario Outline: Trying to add videos to a non existing playlist
 
     When I add created video to a non existing playlist with <ID>
-    Then the response code is 500
+    Then the response code is 404
 
     Examples:
       | ID         |
+#      passing invalid playlist id --FAILING
       | abcdfhxdks |
+#      passing empty value
+      |            |

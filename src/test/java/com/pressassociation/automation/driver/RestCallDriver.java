@@ -13,6 +13,8 @@ import java.io.IOException;
 
 public class RestCallDriver {
 
+    //Handles all the rest calls in this class
+
     public void callGetRestEndPoint(String endpointURL) throws IOException{
         AppResponse appResponse = Request.Get(endpointURL).addHeader("Content-Type","application/json").
                 execute().handleResponse(new AppResponseHandler());

@@ -9,15 +9,12 @@ Feature: Integration tests between playlist and video services
       | New Playlist 2 | Playlist 2 |
     And I add created video to playlist
 
+  @failing
   Scenario: checking videos in playlist after deleting created video
 
-#    When I delete the video
+    When I delete the video
     And  I get a created playlist
     Then the response code is 200
     And the response body contains 'key' to be 'value'
-      | key    | value          |
-      | desc   | New Playlist 2 |
-      | title  | Playlist 2     |
-      | __v    | 0              |
-      | _id    | 'NOT_NULL'     |
-      | videos | 1              |
+      | key          | value          |
+      | videos       | 0              |

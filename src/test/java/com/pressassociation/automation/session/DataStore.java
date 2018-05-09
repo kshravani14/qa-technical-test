@@ -4,17 +4,10 @@ import cucumber.api.Scenario;
 import java.util.HashMap;
 
 public class DataStore {
-    private static Scenario currentScenario = null;
+
     private static HashMap<Object, Object> data = new HashMap<Object, Object>();
 
-    public static Scenario getCurrentScenario() {
-        return currentScenario;
-    }
-
-    public static void setCurrentScenario(Scenario currentScenario) {
-        DataStore.currentScenario = currentScenario;
-    }
-
+    //session object for scenario which keeps data with key value pair
     public static void setDataKey(String key, Object value){
         data.put(key, value);
     }
